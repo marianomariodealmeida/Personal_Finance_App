@@ -106,4 +106,8 @@ class SPARouter {
 }
 
 export const router = new SPARouter();
-document.addEventListener('DOMContentLoaded', () => router.init());
+window.router = router;
+
+document.addEventListener('DOMContentLoaded', () => {
+  router.init();
+});
