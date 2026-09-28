@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -13,7 +13,7 @@
       theme: {
         extend: {
           colors: {
-            brand: '#C6FE1E', // Verde Neon Pierre
+            brand: '#C6FE1E',
             surface: '#121212',
             card: '#1A1A1A',
             border: '#2A2A2A'
@@ -23,18 +23,13 @@
     }
   </script>
   
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Estilos Personalizados -->
-  <style>
-    body { background-color: #0A0A0A; color: #FFFFFF; font-family: system-ui, -apple-system, sans-serif; }
-    .glass-card { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
 </head>
-<body class="flex flex-col h-screen overflow-hidden">
+<body class="flex flex-col h-screen overflow-hidden bg-[#0A0A0A] text-white">
 
   <!-- BARRA SUPERIOR (HEADER) -->
   <header id="top-bar" class="flex justify-between items-center px-4 py-3 bg-black/40 backdrop-blur-md border-b border-border z-20">
@@ -48,6 +43,10 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
+      <!-- Botão para Testar o Modal de Categorias -->
+      <button onclick="toggleCategoriesModal(true)" class="p-2 rounded-full hover:bg-card text-gray-300" title="Categorias">
+        <i data-lucide="tag" class="w-5 h-5"></i>
+      </button>
       <button onclick="router.navigate('notifications')" class="p-2 rounded-full hover:bg-card text-gray-300">
         <i data-lucide="bell" class="w-5 h-5"></i>
       </button>
@@ -57,15 +56,14 @@
     </div>
   </header>
 
-  <!-- CONTENTOR PRINCIPAL DE TELAS (CONTAINER SPA) -->
+  <!-- CONTAINER PRINCIPAL (SPA VIEW) -->
   <main id="app-view" class="flex-1 overflow-y-auto no-scrollbar relative p-4 pb-24">
-    <!-- As vistas (Dashboard, Atividades, Chat, Perfil, etc.) são injetadas aqui via JavaScript -->
+    <!-- As vistas são injetadas aqui pelo app.js -->
   </main>
 
-  <!-- MODAL / BOTTOM SHEET DE CATEGORIAS -->
+  <!-- MODAL DE CATEGORIAS -->
   <div id="categories-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex-col justify-end">
-    <div class="bg-[#121212] w-full h-[90vh] rounded-t-3xl border-t border-border flex flex-col p-4 animate-slide-up">
-      <!-- Cabeçalho do Modal -->
+    <div class="bg-[#121212] w-full h-[85vh] rounded-t-3xl border-t border-border flex flex-col p-4 animate-slide-up">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold text-white">Categorias</h2>
         <button onclick="toggleCategoriesModal(false)" class="p-2 bg-card rounded-full text-gray-400 hover:text-white">
@@ -73,20 +71,18 @@
         </button>
       </div>
       
-      <!-- Campo de Pesquisa -->
       <div class="relative mb-4">
         <i data-lucide="search" class="w-5 h-5 absolute left-3 top-3 text-gray-400"></i>
-        <input type="text" placeholder="Buscar categoria..." class="w-full bg-card border border-border rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-brand" />
+        <input id="categories-search" type="text" placeholder="Buscar categoria..." class="w-full bg-card border border-border rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-brand" />
       </div>
 
-      <!-- Lista Scrollável de Categorias -->
-      <div id="categories-list" class="flex-1 overflow-y-auto space-y-6 pr-1 no-scrollbar">
-        <!-- Renderizado dinamicamente via JS com os dados da taxonomia -->
+      <div id="categories-list" class="flex-1 overflow-y-auto space-y-4 pr-1 no-scrollbar">
+        <!-- Preenchido via categories-render.js -->
       </div>
     </div>
   </div>
 
-  <!-- BARRA DE NAVEGAÇÃO INFERIOR (NAVIGATION BAR) -->
+  <!-- NAVEGAÇÃO INFERIOR -->
   <nav class="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-lg border-t border-border px-6 py-2 flex justify-between items-center z-30">
     <button onclick="router.navigate('dashboard')" class="nav-btn flex flex-col items-center gap-1 text-brand" data-target="dashboard">
       <i data-lucide="layout-grid" class="w-6 h-6"></i>
@@ -97,9 +93,7 @@
       <span class="text-[10px] font-medium">Atividades</span>
     </button>
     <button onclick="router.navigate('chat')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-white" data-target="chat">
-      <div class="relative">
-        <i data-lucide="sparkles" class="w-6 h-6 text-brand"></i>
-      </div>
+      <i data-lucide="sparkles" class="w-6 h-6 text-brand"></i>
       <span class="text-[10px] font-medium">Pierre IA</span>
     </button>
     <button onclick="router.navigate('profile')" class="nav-btn flex flex-col items-center gap-1 text-gray-400 hover:text-white" data-target="profile">
@@ -108,13 +102,22 @@
     </button>
   </nav>
 
-  <!-- Scripts Lucide Icons -->
+  <!-- SCRIPTS DA APLICAÇÃO -->
+  <script src="assets/js/categories-data.js"></script>
+  <script src="assets/js/categories-render.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+
   <script>
-    lucide.createIcons();
     function toggleCategoriesModal(show) {
       const modal = document.getElementById('categories-modal');
-      if(show) modal.classList.remove('hidden');
-      else modal.classList.add('hidden');
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        if (typeof renderCategories === 'function') renderCategories();
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
     }
   </script>
 </body>
