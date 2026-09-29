@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Pierre - Gestão Financeira Inteligente</title>
+  <title>PerFinApp - Gestão de Finanças Pessoais</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -31,30 +31,34 @@
 </head>
 <body class="flex flex-col h-screen overflow-hidden bg-[#0A0A0A] text-white">
 
-  <!-- BARRA SUPERIOR (HEADER) -->
-  <header id="top-bar" class="flex justify-between items-center px-4 py-3 bg-black/40 backdrop-blur-md border-b border-border z-20">
-    <div class="flex items-center gap-3">
-      <div id="user-avatar" class="w-9 h-9 rounded-full bg-brand/20 border border-brand text-brand flex items-center justify-center font-bold text-sm">
-        P
-      </div>
-      <div>
-        <h1 id="screen-title" class="text-base font-semibold leading-tight">Olá, Utilizador</h1>
-        <p id="screen-subtitle" class="text-xs text-gray-400">Resumo Financeiro</p>
-      </div>
+ <!-- BARRA SUPERIOR (HEADER) -->
+<header id="top-bar" class="flex justify-between items-center px-4 py-3 bg-black/40 backdrop-blur-md border-b border-border z-20">
+  <div class="flex items-center gap-3">
+    <!-- Avatar / Ícone do João-de-barro -->
+    <div id="user-avatar" class="w-9 h-9 rounded-full bg-brand/20 border border-brand text-brand flex items-center justify-center font-bold text-sm">
+      <i data-lucide="bird" class="w-5 h-5"></i>
     </div>
-    <div class="flex items-center gap-2">
-      <!-- Botão para Testar o Modal de Categorias -->
-      <button onclick="toggleCategoriesModal(true)" class="p-2 rounded-full hover:bg-card text-gray-300" title="Categorias">
-        <i data-lucide="tag" class="w-5 h-5"></i>
-      </button>
-      <button onclick="router.navigate('notifications')" class="p-2 rounded-full hover:bg-card text-gray-300">
-        <i data-lucide="bell" class="w-5 h-5"></i>
-      </button>
-      <button onclick="router.navigate('profile')" class="p-2 rounded-full hover:bg-card text-gray-300">
-        <i data-lucide="settings" class="w-5 h-5"></i>
-      </button>
+    <div>
+      <h1 id="screen-title" class="text-base font-semibold leading-tight">Olá, Utilizador</h1>
+      <p id="screen-subtitle" class="text-xs text-gray-400">Resumo Financeiro • PerFinApp</p>
     </div>
-  </header>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <!-- Botão para Testar o Modal de Categorias -->
+    <button onclick="toggleCategoriesModal(true)" class="p-2 rounded-full hover:bg-card text-gray-300" title="Categorias">
+      <i data-lucide="tag" class="w-5 h-5"></i>
+    </button>
+    <!-- Botão de Notificações -->
+    <button onclick="router.navigate('notifications')" class="p-2 rounded-full hover:bg-card text-gray-300" title="Notificações">
+      <i data-lucide="bell" class="w-5 h-5"></i>
+    </button>
+    <!-- Botão de Definições -->
+    <button onclick="router.navigate('profile')" class="p-2 rounded-full hover:bg-card text-gray-300" title="Perfil">
+      <i data-lucide="settings" class="w-5 h-5"></i>
+    </button>
+  </div>
+</header>
 
   <!-- CONTAINER PRINCIPAL (SPA VIEW) -->
   <main id="app-view" class="flex-1 overflow-y-auto no-scrollbar relative p-4 pb-24">
