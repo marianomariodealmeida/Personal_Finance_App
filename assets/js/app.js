@@ -79,19 +79,21 @@ class SPARouter {
 
   // --- TELAS DE AUTENTICAÇÃO ---
 
-  // 1. Tela Inicial (Pierre)[cite: 31]
+  // 1. Tela Inicial (João-de-barro / PerFinApp)
   async renderWelcome() {
     return `
       <div class="relative h-screen w-full flex flex-col justify-between p-6 bg-cover bg-center overflow-hidden" 
-           style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80');">
+           style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&q=80');">
         
+        <!-- Logo e Título -->
         <div class="pt-8 text-center">
-          <h1 class="text-6xl font-normal text-white tracking-wide" style="font-family: 'Brush Script MT', cursive, sans-serif;">Pierre</h1>
+          <h1 class="text-4xl font-black text-white tracking-wider">PerFinApp</h1>
         </div>
 
+        <!-- Mensagem do João de Barro e Botões -->
         <div class="space-y-6 pb-6 z-10">
           <h2 class="text-2xl font-medium text-white leading-tight">
-            Sua grana fala.<br />O Pierre escuta
+            Construindo suas finanças,<br />tijolo por tijolo.
           </h2>
 
           <div class="flex gap-3">
@@ -107,7 +109,7 @@ class SPARouter {
     `;
   }
 
-  // 2. Tela de Cadastro (Google & Microsoft)
+  // 2. Tela de Cadastro (João-de-barro)
   async renderRegister() {
     return `
       <div class="min-h-screen w-full bg-black text-white p-6 flex flex-col justify-between">
@@ -116,14 +118,15 @@ class SPARouter {
             <i data-lucide="arrow-left" class="w-5 h-5"></i>
           </button>
 
+          <!-- Ícone do João-de-barro -->
           <div class="flex justify-center mb-8">
             <div class="w-16 h-16 bg-[#1A1A1A] rounded-2xl flex items-center justify-center border border-border">
-              <i data-lucide="cat" class="w-10 h-10 text-white"></i>
+              <i data-lucide="bird" class="w-10 h-10 text-white"></i>
             </div>
           </div>
 
           <h2 class="text-2xl font-semibold text-center mb-2">Crie sua conta</h2>
-          <p class="text-xs text-gray-400 text-center mb-8">Escolha como deseja continuar no Pierre</p>
+          <p class="text-xs text-gray-400 text-center mb-8">Escolha como deseja continuar no PerFinApp</p>
 
           <div class="space-y-3">
             <button onclick="window.loginWithGoogle()" class="w-full py-3.5 bg-[#121212] border border-[#2A2A2A] rounded-full text-sm font-medium text-white flex items-center justify-center gap-3 hover:bg-[#1A1A1A] transition-colors">
@@ -145,7 +148,7 @@ class SPARouter {
     `;
   }
 
-  // 3. Tela de Login (Google & Microsoft)
+  // 3. Tela de Login (João-de-barro)
   async renderLogin() {
     return `
       <div class="min-h-screen w-full bg-black text-white p-6 flex flex-col justify-between">
@@ -154,14 +157,15 @@ class SPARouter {
             <i data-lucide="arrow-left" class="w-5 h-5"></i>
           </button>
 
+          <!-- Ícone do João-de-barro -->
           <div class="flex justify-center mb-8">
             <div class="w-16 h-16 bg-[#1A1A1A] rounded-2xl flex items-center justify-center border border-border">
-              <i data-lucide="cat" class="w-10 h-10 text-white"></i>
+              <i data-lucide="bird" class="w-10 h-10 text-white"></i>
             </div>
           </div>
 
           <h2 class="text-2xl font-semibold text-center mb-2">Bem-vindo de volta</h2>
-          <p class="text-xs text-gray-400 text-center mb-8">Acesse sua conta para continuar</p>
+          <p class="text-xs text-gray-400 text-center mb-8">Acesse sua conta para continuar no PerFinApp</p>
 
           <div class="space-y-3">
             <button onclick="window.loginWithGoogle()" class="w-full py-3.5 bg-[#121212] border border-[#2A2A2A] rounded-full text-sm font-medium text-white flex items-center justify-center gap-3 hover:bg-[#1A1A1A] transition-colors">
@@ -183,7 +187,7 @@ class SPARouter {
     `;
   }
 
-  // --- TELAS INTERNAS (PROTEGIDAS) ---
+  // --- TELAS INTERNAS ---
 
   async renderDashboard() {
     return `
@@ -209,11 +213,11 @@ class SPARouter {
       <div class="flex flex-col h-[calc(100vh-140px)]">
         <div id="chat-messages" class="flex-1 overflow-y-auto space-y-3 pr-1">
           <div class="p-3 rounded-2xl bg-card max-w-[80%] text-sm text-gray-200">
-            Olá! Sou o Pierre. Como posso ajudar nas tuas finanças hoje?
+            Olá! Sou o João-de-barro, o teu assistente financeiro no PerFinApp. Como posso ajudar a organizar a tua casa financeira hoje?
           </div>
         </div>
         <div class="pt-3 flex gap-2">
-          <input id="chat-input" type="text" placeholder="Pergunta algo..." class="flex-1 bg-card border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand" />
+          <input id="chat-input" type="text" placeholder="Pergunta algo ao João de Barro..." class="flex-1 bg-card border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand" />
           <button id="send-btn" class="bg-brand text-black font-bold px-4 rounded-xl flex items-center justify-center">
             <i data-lucide="send" class="w-5 h-5"></i>
           </button>
